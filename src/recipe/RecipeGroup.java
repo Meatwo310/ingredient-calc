@@ -17,6 +17,9 @@ public class RecipeGroup {
         return this;
     }
 
+    public RecipeTree getRecipeTree(Item item) {
+        return getRecipeTree(item, 1);
+    }
     public RecipeTree getRecipeTree(Item item, int quantity) {
         RecipeTree recipeTree = new RecipeTree(item, quantity);
         return recipeTree.calculateChildrenRecursive(map);

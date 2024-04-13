@@ -12,6 +12,9 @@ public class Required {
 
     public Required() {}
 
+    public Required add(Item item) {
+        return this.add(item, 1);
+    }
     public Required add(Item item, int quantity) {
         return this.add(new Ingredient(item, quantity));
     }
