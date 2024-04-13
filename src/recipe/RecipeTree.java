@@ -51,14 +51,11 @@ public class RecipeTree {
     public RecipeTree calculateChildrenRecursive(LinkedHashMap<Item, Required> map) {
         // このアイテムのレシピが存在しない場合
         if (!Item.mapHasItem(map, this.item)) {
-//            System.out.println("✘ No recipe found for " + this.item.name);
             return this;
         }
 
-//        System.out.println("✔ Found recipe for " + this.item.name);
 
         // このアイテムのレシピ
-//        Required required = map.get(this.item);
         Required required = Required.getFromMap(map, this.item);
 
         // このアイテムのレシピの材料を再帰的に設定

@@ -12,14 +12,6 @@ public class Item {
     }
 
     public static boolean mapHasItem(LinkedHashMap<Item, Required> map, Item item) {
-        return map.keySet().stream().anyMatch(key -> {
-            if (key.name.equals(item.name)) {
-//                System.out.println("this is " + item.name);
-                return true;
-            } else {
-//                System.out.println("this isn't " + item.name);
-                return false;
-            }
-        });
+        return map.keySet().stream().anyMatch(key -> key.name.equals(item.name));
     }
 }

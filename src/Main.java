@@ -336,7 +336,7 @@ public class Main {
                         .add(NUCLEAR_PROCESSOR)
                         .add(NUCLEAR_CIRCUIT, 3));
 
-        final var tree = group.getRecipeTree(ATOMIC_BOMB, 1);
+        final var tree = group.getRecipeTree(ATOMIC_BOMB);
 
         tree.print();
         System.out.println();

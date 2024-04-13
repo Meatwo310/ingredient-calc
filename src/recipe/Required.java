@@ -6,6 +6,7 @@ import general.Item;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Required {
     public final List<Ingredient> ingredients = new ArrayList<>();
@@ -36,7 +37,7 @@ public class Required {
     public static Required getFromMap(LinkedHashMap<Item, Required> map, Item item) {
         return map.entrySet().stream()
                 .filter(entry -> entry.getKey().name.equals(item.name))
-                .map(entry -> entry.getValue())
+                .map(Map.Entry::getValue)
                 .findFirst()
                 .orElse(null);
     }
