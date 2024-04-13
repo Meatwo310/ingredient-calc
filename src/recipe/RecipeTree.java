@@ -78,7 +78,7 @@ public class RecipeTree {
 
     public void printRecursive(int depth) {
         for (int i = 0; i < depth - 1; i++) {
-            System.out.print("  ");
+            System.out.print("|  ");
         }
         if (depth > 0) {
             System.out.print("|- ");
