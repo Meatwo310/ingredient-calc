@@ -88,4 +88,23 @@ public class RecipeTree {
             child.printRecursive(depth + 1);
         }
     }
+
+    public void printTotal(boolean includeParents) {
+        System.out.println(includeParents ? "[Total including parents]" : "[Total]");
+        this.calculateTotal(includeParents).forEach((key, value) -> System.out.println(key + ": " + value));
+    }
+    public LinkedHashMap<String, Number> calculateTotal(boolean includeParents) {
+        LinkedHashMap<String, Number> total = new LinkedHashMap<>();
+        this.calculateTotalRecursive(0, total, includeParents);
+        return total;
+    }
+
+    public void calculateTotalRecursive(int depth, LinkedHashMap<String, Number> total, boolean includeParents) {
+        for (RecipeTree child : this.children) {
+            child.calculateTotalRecursive(depth + 1, total, includeParents);
+        }
+        if (includeParents || this.children.isEmpty()) {
+            total.put(this.item.name, total.getOrDefault(this.item.name, 0).intValue() + this.quantity);
+        }
+    }
 }
