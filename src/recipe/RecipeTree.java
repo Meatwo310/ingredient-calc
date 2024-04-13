@@ -3,9 +3,7 @@ package recipe;
 import general.Ingredient;
 import general.Item;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 public class RecipeTree {
     public Item item;
@@ -88,20 +86,27 @@ public class RecipeTree {
 
     public void printTotal(boolean includeParents) {
         System.out.println(includeParents ? "[Total including parents]" : "[Total]");
-        this.calculateTotal(includeParents).forEach((key, value) -> System.out.println(key + ": " + value));
+        // sort by item name
+        this.calculateTotal(includeParents)
+                .entrySet().stream()
+//                // sort by item quantity
+//                .sorted(Map.Entry.comparingByValue())
+                // sort by name
+                .sorted(Map.Entry.comparingByKey())
+                .forEach((entry) -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
-    public LinkedHashMap<String, Number> calculateTotal(boolean includeParents) {
-        LinkedHashMap<String, Number> total = new LinkedHashMap<>();
+    public LinkedHashMap<String, Integer> calculateTotal(boolean includeParents) {
+        LinkedHashMap<String, Integer> total = new LinkedHashMap<>();
         this.calculateTotalRecursive(0, total, includeParents);
         return total;
     }
 
-    public void calculateTotalRecursive(int depth, LinkedHashMap<String, Number> total, boolean includeParents) {
+    public void calculateTotalRecursive(int depth, LinkedHashMap<String, Integer> total, boolean includeParents) {
         for (RecipeTree child : this.children) {
             child.calculateTotalRecursive(depth + 1, total, includeParents);
         }
         if (includeParents || this.children.isEmpty()) {
-            total.put(this.item.name, total.getOrDefault(this.item.name, 0).intValue() + this.quantity);
+            total.put(this.item.name, total.getOrDefault(this.item.name, 0) + this.quantity);
         }
     }
 }
