@@ -1,4 +1,3 @@
-import general.Ingredient;
 import general.Item;
 import recipe.RecipeGroup;
 

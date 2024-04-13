@@ -48,14 +48,18 @@ public class RecipeTree {
      * @param map レシピが格納されたマップ
      * @return 子が設定されたかどうか; これ以上分解できない場合はfalse
      */
-    public boolean calculateChildrenRecursive(LinkedHashMap<Item, Required> map) {
+    public RecipeTree calculateChildrenRecursive(LinkedHashMap<Item, Required> map) {
         // このアイテムのレシピが存在しない場合
-        if (!map.containsKey(this.item)) {
-            return false;
+        if (!Item.mapHasItem(map, this.item)) {
+//            System.out.println("✘ No recipe found for " + this.item.name);
+            return this;
         }
 
+//        System.out.println("✔ Found recipe for " + this.item.name);
+
         // このアイテムのレシピ
-        Required required = map.get(this.item);
+//        Required required = map.get(this.item);
+        Required required = Required.getFromMap(map, this.item);
 
         // このアイテムのレシピの材料を再帰的に設定
         for (Ingredient ingredient : required.ingredients) {
@@ -64,7 +68,7 @@ public class RecipeTree {
             this.children.add(child);
         }
 
-        return true;
+        return this;
     }
 
     public void print() {

@@ -18,9 +18,8 @@ public class RecipeGroup {
     }
 
     public RecipeTree getRecipeTree(Item item, int quantity) {
-        var recipeTree = new RecipeTree(item, quantity);
-        recipeTree.calculateChildrenRecursive(map);
-        return recipeTree;
+        RecipeTree recipeTree = new RecipeTree(item, quantity);
+        return recipeTree.calculateChildrenRecursive(map);
     }
 
     public void print() {

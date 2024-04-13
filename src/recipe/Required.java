@@ -4,6 +4,7 @@ import general.Ingredient;
 import general.Item;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Required {
@@ -27,5 +28,13 @@ public class Required {
         ingredients.forEach(ingredient ->
                 System.out.println("|- " + ingredient.quantity + "x " + ingredient.name)
         );
+    }
+
+    public static Required getFromMap(LinkedHashMap<Item, Required> map, Item item) {
+        return map.entrySet().stream()
+                .filter(entry -> entry.getKey().name.equals(item.name))
+                .map(entry -> entry.getValue())
+                .findFirst()
+                .orElse(null);
     }
 }

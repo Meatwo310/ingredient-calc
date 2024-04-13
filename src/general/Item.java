@@ -1,5 +1,9 @@
 package general;
 
+import recipe.Required;
+
+import java.util.LinkedHashMap;
+
 public class Item {
     public final String name;
 
@@ -7,13 +11,15 @@ public class Item {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()) {
-            return false;
-        }
-
-        Item other = (Item) obj;
-        return this.name.equals(other.name);
+    public static boolean mapHasItem(LinkedHashMap<Item, Required> map, Item item) {
+        return map.keySet().stream().anyMatch(key -> {
+            if (key.name.equals(item.name)) {
+//                System.out.println("this is " + item.name);
+                return true;
+            } else {
+//                System.out.println("this isn't " + item.name);
+                return false;
+            }
+        });
     }
 }
