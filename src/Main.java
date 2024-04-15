@@ -5,7 +5,7 @@ public class Main {
         // 事前に定義されたゲームクラスを使用すると、事前に用意されたItemやRecipeGroupを利用できます
         final var game = new AssemblyLine2();
 
-        // すでにItemが含まれています
+        // 既存のItemを利用できます
 //        System.out.println(game.ALUMINIUM.name);
 
         // 手動でItemを作成することもできます
