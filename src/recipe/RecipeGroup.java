@@ -8,12 +8,23 @@ import java.util.function.Consumer;
 public class RecipeGroup {
     public final LinkedHashMap<Item, Required> map = new LinkedHashMap<>();
 
-    public RecipeGroup add(Item item, Consumer<Required> requiredConsumer) {
+    public RecipeGroup add(Item resultItem, Consumer<Required> requiredConsumer) {
         Required required = new Required();
         requiredConsumer.accept(required);
 
-        map.put(item, required);
+        map.put(resultItem, required);
 
+        return this;
+    }
+    public RecipeGroup add(Item resultItem, Item ingredientItem) {
+        return add(resultItem, required -> required.add(ingredientItem));
+    }
+    public RecipeGroup add(Item resultItem, Item ingredientItem, int quantity) {
+        return add(resultItem, required -> required.add(ingredientItem, quantity));
+    }
+
+    public RecipeGroup remove(Item resultItem) {
+        map.entrySet().removeIf(entry -> entry.getKey().name.equals(resultItem.name));
         return this;
     }
 
