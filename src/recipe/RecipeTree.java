@@ -78,7 +78,7 @@ public class RecipeTree {
         if (depth > 0) {
             System.out.print("|- ");
         }
-        System.out.println(this.quantity + "x " + this.item.name);
+        System.out.println(this.quantity + "x " + this.item.name.replaceFirst("\\[.+] ", ""));
         for (RecipeTree child : this.children) {
             child.printRecursive(depth + 1);
         }
@@ -93,7 +93,7 @@ public class RecipeTree {
 //                .sorted(Map.Entry.comparingByValue())
                 // sort by name
                 .sorted(Map.Entry.comparingByKey())
-                .forEach((entry) -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+                .forEach((entry) -> System.out.println((entry.getValue() + "x " + entry.getKey()).replaceFirst("([0-9]+x) (\\[.+]) (.+)", "$2 $1 $3")));
     }
     public LinkedHashMap<String, Integer> calculateTotal(boolean includeParents) {
         LinkedHashMap<String, Integer> total = new LinkedHashMap<>();
