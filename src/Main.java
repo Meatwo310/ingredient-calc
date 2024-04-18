@@ -61,6 +61,10 @@ public class Main {
         // 特定のアイテムについてのRecipeTreeを作成します。
         final RecipeTree tree = group.getRecipeTree(game.AI_ROBOT_BOMBER);
 
+        // RecipeTreeの構造を表示します。
+        tree.print();
+        System.out.println();
+
         // RecipeTreeから必要な素材を計算し表示します。
         tree.printTotal();
         System.out.println();
