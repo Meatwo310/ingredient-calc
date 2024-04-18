@@ -3,7 +3,7 @@ package games;
 import general.Item;
 import recipe.RecipeGroup;
 
-public class AssemblyLine2 {
+public class AssemblyLine2 extends Game {
     // Ore
     public final Item ALUMINIUM = new Item("[Ore] Aluminium");
     public final Item COPPER = new Item("[Ore] Copper");
