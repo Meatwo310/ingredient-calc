@@ -44,7 +44,7 @@ public class RecipeGroup {
      * @param resultItem 成果物
      * @param ingredientItem 必要なアイテム
      * @param quantity 必要なアイテムの個数
-     * @return
+     * @return このオブジェクト自身
      */
     public RecipeGroup add(Item resultItem, Item ingredientItem, int quantity) {
         return add(resultItem, required -> required.add(ingredientItem, quantity));
