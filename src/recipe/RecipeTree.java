@@ -84,6 +84,9 @@ public class RecipeTree {
         }
     }
 
+    public void printTotal() {
+        this.printTotal(false);
+    }
     public void printTotal(boolean includeParents) {
         System.out.println(includeParents ? "[Total including parents]" : "[Total]");
         // sort by item name
@@ -95,6 +98,7 @@ public class RecipeTree {
                 .sorted(Map.Entry.comparingByKey())
                 .forEach((entry) -> System.out.println((entry.getValue() + "x " + entry.getKey()).replaceFirst("([0-9]+x) (\\[.+]) (.+)", "$2 $1 $3")));
     }
+
     public LinkedHashMap<String, Integer> calculateTotal(boolean includeParents) {
         LinkedHashMap<String, Integer> total = new LinkedHashMap<>();
         this.calculateTotalRecursive(0, total, includeParents);
