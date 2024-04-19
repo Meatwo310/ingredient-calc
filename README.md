@@ -4,7 +4,7 @@
 警告: このプロジェクトは現在最低限の機能のみを有しています。
 
 ### 使い方
-リポジトリをクローンして、お好みのIDEを用いて`Main.java`を編集し、実行してください。
+リポジトリをクローンして、お好みのIDEを用いて`Main.java`を編集し、Gradleの`run`タスクを実行してください。
 
 ### 実装状況
 - [x] アイテムの追加
@@ -23,7 +23,7 @@
 Warning: This project currently has only the minimum functionality.
 
 ### How to use
-Clone the repository, edit `Main.java` with your favorite IDE, and run it.
+Clone the repository, edit `Main.java` with your favorite IDE, and run the Gradle `run` task.
 
 ### Implementation status
 - [x] Add items
