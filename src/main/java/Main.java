@@ -14,15 +14,22 @@ public class Main {
         final Item COPPER       = new Item("[Ore] Copper");
         final Item GOLD         = new Item("[Ore] Gold");
         final Item COPPER_WIRE  = new Item("[T.0] Copper Wire");
+        final Item DIAMOND_WIRE = new Item("[T.0] Diamond Wire");
+        final Item GOLD_LIQUID  = new Item("[T.0] Gold Liquid");
         final Item CIRCUIT      = new Item("[T.1] Circuit");
+        final Item PROCESSOR    = new Item("[T.2] Processor");
         System.out.println("COPPER.name: " + COPPER.name + "\n");
 
         // RecipeGroupを作成して、レシピを登録します。
         final RecipeGroup group = new RecipeGroup()
                 .add(COPPER_WIRE, COPPER)
-                .add(CIRCUIT, r -> r
-                        .add(COPPER_WIRE) // quantityは1個の場合省略可能
-                        .add(GOLD));
+                .add(DIAMOND_WIRE, DIAMOND_WIRE)
+                .add(GOLD_LIQUID, GOLD)
+                .add(CIRCUIT, COPPER_WIRE, GOLD)
+                .add(PROCESSOR,
+                        CIRCUIT.x(1),
+                        GOLD_LIQUID.x(3),
+                        DIAMOND_WIRE.x(3));
 
         // RecipeGroupの構造を表示します。
         group.print();

@@ -1,9 +1,10 @@
 package recipe;
 
+import general.Ingredient;
 import general.Item;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.function.Consumer;
 
 /**
  * 複数個のレシピをまとめたグループ。
@@ -14,41 +15,92 @@ public class RecipeGroup {
      */
     public final LinkedHashMap<Item, Required> map = new LinkedHashMap<>();
 
+    // レシピ追加
+
     /**
      * このグループにレシピを追加する。
-     * @param resultItem 成果物
-     * @param requiredConsumer 必要なアイテムを追加する処理
-     * @return このオブジェクト自身
+     * @param resultItems 成果物
+     * @param requiredItems 必要なアイテム
+     * @return このRecipeGroupオブジェクト
      */
-    public RecipeGroup add(Item resultItem, Consumer<Required> requiredConsumer) {
-        Required required = new Required();
-        requiredConsumer.accept(required);
+    public RecipeGroup add(Ingredient[] resultItems, Ingredient... requiredItems) {
+        if (resultItems.length < 1)     throw new IllegalArgumentException("resultItems must have at least one element.");
+        if (requiredItems.length < 1)   throw new IllegalArgumentException("requiredItems must have at least one element.");
 
-        map.put(resultItem, required);
-
+        // TODO: 複数個の成果物に対応
+        map.put(resultItems[0].toItem(), new Required(requiredItems));
         return this;
     }
 
     /**
      * このグループにレシピを追加する。
      * @param resultItem 成果物
-     * @param ingredientItem 必要なアイテム
-     * @return このオブジェクト自身
+     * @param requiredItems 必要なアイテム
+     * @return このRecipeGroupオブジェクト
      */
-    public RecipeGroup add(Item resultItem, Item ingredientItem) {
-        return add(resultItem, required -> required.add(ingredientItem));
+    public RecipeGroup add(Ingredient resultItem, Ingredient... requiredItems) {
+        return add(new Ingredient[]{resultItem}, requiredItems);
     }
 
     /**
      * このグループにレシピを追加する。
      * @param resultItem 成果物
-     * @param ingredientItem 必要なアイテム
-     * @param quantity 必要なアイテムの個数
-     * @return このオブジェクト自身
+     * @param requiredItems 必要なアイテム
+     * @return このRecipeGroupオブジェクト
      */
-    public RecipeGroup add(Item resultItem, Item ingredientItem, int quantity) {
-        return add(resultItem, required -> required.add(ingredientItem, quantity));
+    public RecipeGroup add(Item resultItem, Ingredient... requiredItems) {
+        return add(new Ingredient[] { resultItem.toIngredient() }, requiredItems);
     }
+
+    /**
+     * このグループにレシピを追加する。
+     * @param resultItem 成果物
+     * @param requiredItem 必要なアイテム
+     * @return このRecipeGroupオブジェクト
+     */
+    public RecipeGroup add(Item resultItem, Item... requiredItem) {
+        return add(
+                new Ingredient[] { resultItem.toIngredient() },
+                Arrays.stream(requiredItem).map(Item::toIngredient).toArray(Ingredient[]::new));
+    }
+
+//    /**
+//     * このグループにレシピを追加する。
+//     * @param resultItem 成果物
+//     * @param requiredConsumer 必要なアイテムを追加する処理
+//     * @return このオブジェクト自身
+//     */
+//    public RecipeGroup add(Item resultItem, Consumer<Required> requiredConsumer) {
+//        Required required = new Required();
+//        requiredConsumer.accept(required);
+//
+//        map.put(resultItem, required);
+//
+//        return this;
+//    }
+//
+//    /**
+//     * このグループにレシピを追加する。
+//     * @param resultItem 成果物
+//     * @param ingredientItem 必要なアイテム
+//     * @return このオブジェクト自身
+//     */
+//    public RecipeGroup add(Item resultItem, Item ingredientItem) {
+//        return add(resultItem, required -> required.add(ingredientItem));
+//    }
+//
+//    /**
+//     * このグループにレシピを追加する。
+//     * @param resultItem 成果物
+//     * @param ingredientItem 必要なアイテム
+//     * @param quantity 必要なアイテムの個数
+//     * @return このオブジェクト自身
+//     */
+//    public RecipeGroup add(Item resultItem, Item ingredientItem, int quantity) {
+//        return add(resultItem, required -> required.add(ingredientItem, quantity));
+//    }
+
+    // レシピ削除
 
     /**
      * このグループから、指定された成果物を持つレシピを削除する。
@@ -59,6 +111,8 @@ public class RecipeGroup {
         map.entrySet().removeIf(entry -> entry.getKey().name.equals(resultItem.name));
         return this;
     }
+
+    // その他
 
     /**
      * 指定されたアイテムのレシピについて、レシピツリーを取得する。

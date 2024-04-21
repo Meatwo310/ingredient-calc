@@ -18,6 +18,30 @@ public class Item {
     }
 
     /**
+     * このItemをIngredientに変換する。
+     * @return 1個のIngredient
+     */
+    public Ingredient toIngredient() {
+        return this.toIngredient(1);
+    }
+    /**
+     * このItemをIngredientに変換する。
+     * @param quantity 個数
+     * @return quantity個のIngredient
+     */
+    public Ingredient toIngredient(int quantity) {
+        return new Ingredient(this, quantity);
+    }
+    /**
+     * toIngredient() のエイリアス。
+     * @param quantity 個数
+     * @return quantity個のIngredient
+     */
+    public Ingredient x(int quantity) {
+        return this.toIngredient(quantity);
+    }
+
+    /**
      * mapがitemを含むならtrue。
      */
     public static boolean mapHasItem(LinkedHashMap<Item, Required> map, Item item) {

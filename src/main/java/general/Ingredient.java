@@ -13,4 +13,12 @@ public class Ingredient extends Item {
         super(item.name);
         this.quantity = quantity;
     }
+
+    /**
+     * このIngredientをItemに変換する。
+     * @return Item
+     */
+    public Item toItem() {
+        return new Item(this.name);
+    }
 }

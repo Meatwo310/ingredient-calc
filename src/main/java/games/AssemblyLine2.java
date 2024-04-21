@@ -136,194 +136,181 @@ public class AssemblyLine2 extends Game {
             .add(IRON_PLATE, IRON)
 
             // Cable
-            .add(ALUMINIUM_CABLE, ALUMINIUM_WIRE, 3)
-            .add(COPPER_CABLE, COPPER_WIRE, 3)
-            .add(DIAMOND_CABLE, DIAMOND_WIRE, 3)
-            .add(GOLD_CABLE, GOLD_WIRE, 3)
-            .add(IRON_CABLE, IRON_WIRE, 3)
-            .add(PLUTONIUM_CABLE, PLUTONIUM_WIRE, 3)
-            .add(URANIUM_CABLE, URANIUM_WIRE, 3)
+            .add(ALUMINIUM_CABLE, ALUMINIUM_WIRE.x(3))
+            .add(COPPER_CABLE, COPPER_WIRE.x(3))
+            .add(DIAMOND_CABLE, DIAMOND_WIRE.x(3))
+            .add(GOLD_CABLE, GOLD_WIRE.x(3))
+            .add(IRON_CABLE, IRON_WIRE.x(3))
+            .add(PLUTONIUM_CABLE, PLUTONIUM_WIRE.x(3))
+            .add(URANIUM_CABLE, URANIUM_WIRE.x(3))
 
             // Refined
             .add(PLUTONIUM_REFINED, PLUTONIUM)
             .add(URANIUM_REFINED, URANIUM)
 
             // Tier 1
-            .add(CIRCUIT, r -> r
-                    .add(COPPER_WIRE)
-                    .add(GOLD))
-            .add(SERVER_RACK, r -> r
-                    .add(ALUMINIUM)
-                    .add(IRON))
-            .add(BATTERY, r -> r
-                    .add(COPPER)
-                    .add(COPPER_LIQUID))
-            .add(ENGINE, r -> r
-                    .add(IRON_GEAR)
-                    .add(IRON))
-            .add(SOLAR_CELL, r -> r
-                    .add(DIAMOND_LIQUID)
-                    .add(GOLD))
-            .add(ELECTRIC_BOARD, r -> r
-                    .add(COPPER_WIRE)
-                    .add(ALUMINIUM))
-            .add(HEATER_PLATE, r -> r
-                    .add(IRON_WIRE)
-                    .add(ALUMINIUM))
+            .add(CIRCUIT, COPPER_WIRE, GOLD)
+            .add(CIRCUIT, COPPER_WIRE, GOLD)
+            .add(SERVER_RACK, ALUMINIUM, IRON)
+            .add(BATTERY, COPPER, COPPER_LIQUID)
+            .add(ENGINE, IRON_GEAR, IRON)
+            .add(SOLAR_CELL, DIAMOND_LIQUID, GOLD)
+            .add(ELECTRIC_BOARD, COPPER_WIRE, ALUMINIUM)
+            .add(HEATER_PLATE, IRON_WIRE, ALUMINIUM)
             
             // Tier 2
-            .add(FAN, r -> r
-                    .add(CIRCUIT)
-                    .add(DIAMOND_GEAR, 3)
-                    .add(ALUMINIUM, 6))
-            .add(POWER_SUPPLY, r -> r
-                    .add(CIRCUIT)
-                    .add(DIAMOND, 6)
-                    .add(ALUMINIUM_LIQUID, 3))
-            .add(PROCESSOR, r -> r
-                    .add(CIRCUIT)
-                    .add(GOLD_LIQUID, 3)
-                    .add(DIAMOND_WIRE, 3))
-            .add(SOLAR_PANEL, r -> r
-                    .add(SOLAR_CELL, 2)
-                    .add(CIRCUIT)
-                    .add(ELECTRIC_BOARD, 2))
+            .add(FAN,
+                    CIRCUIT.x(1),
+                    DIAMOND_GEAR.x(3),
+                    ALUMINIUM.x(6))
+            .add(POWER_SUPPLY,
+                    CIRCUIT.x(1),
+                    DIAMOND.x(6),
+                    ALUMINIUM_LIQUID.x(3))
+            .add(PROCESSOR,
+                    CIRCUIT.x(1),
+                    GOLD_LIQUID.x(3),
+                    DIAMOND_WIRE.x(3))
+            .add(SOLAR_PANEL,
+                    SOLAR_CELL.x(2),
+                    CIRCUIT.x(1),
+                    ELECTRIC_BOARD.x(2))
             
             // Tier 3
-            .add(COMPUTER, r -> r
-                    .add(FAN)
-                    .add(POWER_SUPPLY)
-                    .add(PROCESSOR))
-            .add(ADVANCED_ENGINE, r -> r
-                    .add(ENGINE, 5)
-                    .add(CIRCUIT, 5)
-                    .add(DIAMOND, 10))
-            .add(LASER, r -> r
-                    .add(BATTERY, 5)
-                    .add(HEATER_PLATE, 5)
-                    .add(IRON_LIQUID, 5))
+            .add(COMPUTER,
+                    FAN.x(1),
+                    POWER_SUPPLY.x(1),
+                    PROCESSOR.x(1))
+            .add(ADVANCED_ENGINE,
+                    ENGINE.x(5),
+                    CIRCUIT.x(5),
+                    DIAMOND.x(10))
+            .add(LASER,
+                    BATTERY.x(5),
+                    HEATER_PLATE.x(5),
+                    IRON_LIQUID.x(5))
             
             // Tier 4
-            .add(SUPER_COMPUTER, r -> r
-                    .add(COMPUTER, 2)
-                    .add(SERVER_RACK)
-                    .add(CIRCUIT, 3)
-                    .add(GOLD_CABLE, 3))
-            .add(ELECTRIC_ENGINE, r -> r
-                    .add(BATTERY, 2)
-                    .add(ADVANCED_ENGINE, 2)
-                    .add(ELECTRIC_BOARD, 2)
-                    .add(IRON_PLATE, 5))
-            .add(AI_ROBOT_ARMS, r -> r
-                    .add(LASER, 2)
-                    .add(ALUMINIUM_PLATE, 2)
-                    .add(ALUMINIUM_CABLE, 3)
-                    .add(IRON, 8))
+            .add(SUPER_COMPUTER,
+                    COMPUTER.x(2),
+                    SERVER_RACK.x(1),
+                    CIRCUIT.x(3),
+                    GOLD_CABLE.x(3))
+            .add(ELECTRIC_ENGINE,
+                    BATTERY.x(2),
+                    ADVANCED_ENGINE.x(2),
+                    ELECTRIC_BOARD.x(2),
+                    IRON_PLATE.x(5))
+            .add(AI_ROBOT_ARMS,
+                    LASER.x(2),
+                    ALUMINIUM_PLATE.x(2),
+                    ALUMINIUM_CABLE.x(3),
+                    IRON.x(8))
             
             // Tier 5
-            .add(AI_PROCESSOR, r -> r
-                    .add(CIRCUIT, 10)
-                    .add(SUPER_COMPUTER)
-                    .add(COPPER_PLATE, 6)
-                    .add(COPPER_WIRE, 4))
-            .add(AI_ROBOT_HEAD, r -> r
-                    .add(AI_PROCESSOR)
-                    .add(GOLD_PLATE, 5)
-                    .add(DIAMOND_CABLE, 10)
-                    .add(CIRCUIT, 10))
-            .add(AI_ROBOT_BODY, r -> r
-                    .add(ELECTRIC_ENGINE)
-                    .add(SOLAR_PANEL, 2)
-                    .add(AI_ROBOT_ARMS)
-                    .add(ELECTRIC_BOARD, 5))
+            .add(AI_PROCESSOR,
+                    CIRCUIT.x(10),
+                    SUPER_COMPUTER.x(1),
+                    COPPER_PLATE.x(6),
+                    COPPER_WIRE.x(4))
+            .add(AI_ROBOT_HEAD,
+                    AI_PROCESSOR.x(1),
+                    GOLD_PLATE.x(5),
+                    DIAMOND_CABLE.x(10),
+                    CIRCUIT.x(10))
+            .add(AI_ROBOT_BODY,
+                    ELECTRIC_ENGINE.x(1),
+                    SOLAR_PANEL.x(2),
+                    AI_ROBOT_ARMS.x(1),
+                    ELECTRIC_BOARD.x(5))
             
             // Tier 6
-            .add(AI_ROBOT, r -> r
-                    .add(AI_ROBOT_BODY)
-                    .add(AI_ROBOT_HEAD)
-                    .add(IRON_PLATE, 10)
-                    .add(DIAMOND_CABLE, 5))
+            .add(AI_ROBOT,
+                    AI_ROBOT_BODY.x(1),
+                    AI_ROBOT_HEAD.x(1),
+                    IRON_PLATE.x(10),
+                    DIAMOND_CABLE.x(5))
             
             // Tier 7
-            .add(PLUTONIUM_CELL, r -> r
-                    .add(PLUTONIUM, 2)
-                    .add(SOLAR_CELL, 2)
-                    .add(DIAMOND_LIQUID, 2)
-                    .add(GOLD_CABLE, 2)
-                    .add(COPPER_CABLE, 2))
-            .add(URANIUM_CELL, r -> r
-                    .add(URANIUM, 2)
-                    .add(SOLAR_CELL, 2)
-                    .add(DIAMOND_LIQUID, 2)
-                    .add(GOLD_CABLE, 2)
-                    .add(COPPER_CABLE, 2))
-            .add(PLUTONIUM_CIRCUIT, r -> r
-                    .add(PLUTONIUM, 4)
-                    .add(CIRCUIT, 5)
-                    .add(COPPER, 5)
-                    .add(GOLD_CABLE)
-                    .add(DIAMOND_WIRE, 2))
-            .add(URANIUM_CIRCUIT, r -> r
-                    .add(URANIUM, 4)
-                    .add(CIRCUIT, 5)
-                    .add(COPPER, 5)
-                    .add(GOLD_CABLE)
-                    .add(DIAMOND_WIRE, 2))
-            .add(EXPLOSIVE, r -> r
-                    .add(CIRCUIT, 5)
-                    .add(DIAMOND_WIRE, 10)
-                    .add(COPPER_WIRE, 10)
-                    .add(HEATER_PLATE, 10))
-            .add(TRIGGER, r -> r
-                    .add(IRON, 40)
-                    .add(DIAMOND_WIRE, 10)
-                    .add(CIRCUIT, 5)
-                    .add(ELECTRIC_BOARD, 5))
+            .add(PLUTONIUM_CELL,
+                    PLUTONIUM.x(2),
+                    SOLAR_CELL.x(2),
+                    DIAMOND_LIQUID.x(2),
+                    GOLD_CABLE.x(2),
+                    COPPER_CABLE.x(2))
+            .add(URANIUM_CELL,
+                    URANIUM.x(2),
+                    SOLAR_CELL.x(2),
+                    DIAMOND_LIQUID.x(2),
+                    GOLD_CABLE.x(2),
+                    COPPER_CABLE.x(2))
+            .add(PLUTONIUM_CIRCUIT,
+                    PLUTONIUM.x(4),
+                    CIRCUIT.x(5),
+                    COPPER.x(5),
+                    GOLD_CABLE.x(1),
+                    DIAMOND_WIRE.x(2))
+            .add(URANIUM_CIRCUIT,
+                    URANIUM.x(4),
+                    CIRCUIT.x(5),
+                    COPPER.x(5),
+                    GOLD_CABLE.x(1),
+                    DIAMOND_WIRE.x(2))
+            .add(EXPLOSIVE,
+                    CIRCUIT.x(5),
+                    DIAMOND_WIRE.x(10),
+                    COPPER_WIRE.x(10),
+                    HEATER_PLATE.x(10))
+            .add(TRIGGER,
+                    IRON.x(40),
+                    DIAMOND_WIRE.x(10),
+                    CIRCUIT.x(5),
+                    ELECTRIC_BOARD.x(5))
 
             // Tier 8+
-            .add(NUCLEAR_CELL, r -> r
-                    .add(URANIUM_CELL)
-                    .add(PLUTONIUM_CELL)
-                    .add(SOLAR_CELL, 3)
-                    .add(ELECTRIC_BOARD, 3)
-                    .add(HEATER_PLATE, 3))
-            .add(NUCLEAR_CIRCUIT, r -> r
-                    .add(URANIUM_CIRCUIT)
-                    .add(PLUTONIUM_CIRCUIT)
-                    .add(CIRCUIT, 3)
-                    .add(GOLD_CABLE, 3)
-                    .add(PROCESSOR, 3))
-            .add(IGNITION_SYSTEM, r -> r
-                    .add(TRIGGER, 2)
-                    .add(EXPLOSIVE, 5)
-                    .add(AI_PROCESSOR, 2)
-                    .add(BATTERY, 5))
-            .add(NUCLEAR_CORE, r -> r
-                    .add(NUCLEAR_CELL)
-                    .add(URANIUM_CELL)
-                    .add(PLUTONIUM_CELL)
-                    .add(PROCESSOR, 10)
-                    .add(DIAMOND_CABLE, 4)
-                    .add(GOLD_CABLE, 4))
-            .add(NUCLEAR_PROCESSOR, r -> r
-                    .add(NUCLEAR_CIRCUIT)
-                    .add(URANIUM_CIRCUIT)
-                    .add(PLUTONIUM_CIRCUIT)
-                    .add(AI_PROCESSOR)
-                    .add(PROCESSOR, 5)
-                    .add(DIAMOND_PLATE, 10))
-            .add(ATOMIC_BOMB, r -> r
-                    .add(NUCLEAR_PROCESSOR)
-                    .add(NUCLEAR_CORE)
-                    .add(IGNITION_SYSTEM)
-                    .add(NUCLEAR_CELL)
-                    .add(URANIUM, 15)
-                    .add(PLUTONIUM, 15))
-            .add(AI_ROBOT_BOMBER, r -> r
-                    .add(ATOMIC_BOMB)
-                    .add(AI_ROBOT)
-                    .add(AI_PROCESSOR,  2)
-                    .add(NUCLEAR_CELL, 3)
-                    .add(NUCLEAR_PROCESSOR)
-                    .add(NUCLEAR_CIRCUIT, 3));
+            .add(NUCLEAR_CELL,
+                    URANIUM_CELL.x(1),
+                    PLUTONIUM_CELL.x(1),
+                    SOLAR_CELL.x(3),
+                    ELECTRIC_BOARD.x(3),
+                    HEATER_PLATE.x(3))
+            .add(NUCLEAR_CIRCUIT,
+                    URANIUM_CIRCUIT.x(1),
+                    PLUTONIUM_CIRCUIT.x(1),
+                    CIRCUIT.x(3),
+                    GOLD_CABLE.x(3),
+                    PROCESSOR.x(3))
+            .add(IGNITION_SYSTEM,
+                    TRIGGER.x(2),
+                    EXPLOSIVE.x(5),
+                    AI_PROCESSOR.x(2),
+                    BATTERY.x(5))
+            .add(NUCLEAR_CORE,
+                    NUCLEAR_CELL.x(1),
+                    URANIUM_CELL.x(1),
+                    PLUTONIUM_CELL.x(1),
+                    PROCESSOR.x(10),
+                    DIAMOND_CABLE.x(4),
+                    GOLD_CABLE.x(4))
+            .add(NUCLEAR_PROCESSOR,
+                    NUCLEAR_CIRCUIT.x(1),
+                    URANIUM_CIRCUIT.x(1),
+                    PLUTONIUM_CIRCUIT.x(1),
+                    AI_PROCESSOR.x(1),
+                    PROCESSOR.x(5),
+                    DIAMOND_PLATE.x(10))
+            .add(ATOMIC_BOMB,
+                    NUCLEAR_PROCESSOR.x(1),
+                    NUCLEAR_CORE.x(1),
+                    IGNITION_SYSTEM.x(1),
+                    NUCLEAR_CELL.x(1),
+                    URANIUM.x(15),
+                    PLUTONIUM.x(15))
+            .add(AI_ROBOT_BOMBER,
+                    ATOMIC_BOMB.x(1),
+                    AI_ROBOT.x(1),
+                    AI_PROCESSOR.x(2),
+                    NUCLEAR_CELL.x(3),
+                    NUCLEAR_PROCESSOR.x(1),
+                    NUCLEAR_CIRCUIT.x(3));
 }

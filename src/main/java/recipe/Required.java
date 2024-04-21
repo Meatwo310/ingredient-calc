@@ -3,10 +3,7 @@ package recipe;
 import general.Ingredient;
 import general.Item;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * レシピにおける必要アイテム類。
@@ -18,6 +15,9 @@ public class Required {
     public final List<Ingredient> ingredients = new ArrayList<>();
 
     public Required() {}
+    public Required(Ingredient[] ingredients) {
+        Collections.addAll(this.ingredients, ingredients);
+    }
 
     /**
      * アイテムを追加する。
