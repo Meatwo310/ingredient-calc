@@ -27,6 +27,11 @@ public class RecipeGroup {
         if (resultItems.length < 1)     throw new IllegalArgumentException("resultItems must have at least one element.");
         if (requiredItems.length < 1)   throw new IllegalArgumentException("requiredItems must have at least one element.");
 
+        // 重複チェック
+        if (map.keySet().stream().anyMatch(key -> key.equals(resultItems[0]))) {
+            throw new IllegalArgumentException("The result item already exists in the map.");
+        }
+
         // TODO: 複数個の成果物に対応
         map.put(resultItems[0].toItem(), new Required(requiredItems));
         return this;
@@ -63,42 +68,6 @@ public class RecipeGroup {
                 new Ingredient[] { resultItem.toIngredient() },
                 Arrays.stream(requiredItem).map(Item::toIngredient).toArray(Ingredient[]::new));
     }
-
-//    /**
-//     * このグループにレシピを追加する。
-//     * @param resultItem 成果物
-//     * @param requiredConsumer 必要なアイテムを追加する処理
-//     * @return このオブジェクト自身
-//     */
-//    public RecipeGroup add(Item resultItem, Consumer<Required> requiredConsumer) {
-//        Required required = new Required();
-//        requiredConsumer.accept(required);
-//
-//        map.put(resultItem, required);
-//
-//        return this;
-//    }
-//
-//    /**
-//     * このグループにレシピを追加する。
-//     * @param resultItem 成果物
-//     * @param ingredientItem 必要なアイテム
-//     * @return このオブジェクト自身
-//     */
-//    public RecipeGroup add(Item resultItem, Item ingredientItem) {
-//        return add(resultItem, required -> required.add(ingredientItem));
-//    }
-//
-//    /**
-//     * このグループにレシピを追加する。
-//     * @param resultItem 成果物
-//     * @param ingredientItem 必要なアイテム
-//     * @param quantity 必要なアイテムの個数
-//     * @return このオブジェクト自身
-//     */
-//    public RecipeGroup add(Item resultItem, Item ingredientItem, int quantity) {
-//        return add(resultItem, required -> required.add(ingredientItem, quantity));
-//    }
 
     // レシピ削除
 
