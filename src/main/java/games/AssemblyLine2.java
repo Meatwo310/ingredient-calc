@@ -150,7 +150,6 @@ public class AssemblyLine2 extends Game {
 
             // Tier 1
             .add(CIRCUIT, COPPER_WIRE, GOLD)
-            .add(CIRCUIT, COPPER_WIRE, GOLD)
             .add(SERVER_RACK, ALUMINIUM, IRON)
             .add(BATTERY, COPPER, COPPER_LIQUID)
             .add(ENGINE, IRON_GEAR, IRON)
