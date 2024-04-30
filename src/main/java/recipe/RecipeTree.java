@@ -62,7 +62,7 @@ public class RecipeTree {
      */
     public RecipeTree calculateChildrenRecursive(LinkedHashMap<Item, Required> map) {
         // このアイテムのレシピが存在しない場合
-        if (!Item.mapHasItem(map, this.item)) {
+        if (!map.containsKey(this.item)) {
             return this;
         }
 

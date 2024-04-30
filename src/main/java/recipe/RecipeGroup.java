@@ -27,12 +27,15 @@ public class RecipeGroup {
         if (resultItems.length < 1)     throw new IllegalArgumentException("resultItems must have at least one element.");
         if (requiredItems.length < 1)   throw new IllegalArgumentException("requiredItems must have at least one element.");
 
+        // TODO: 複数個の成果物に対応
+        // 一時的に最初の成果物だけを使用します
+        final Item resultItem = resultItems[0].toItem();
+
         // 重複チェック
-        if (map.keySet().stream().anyMatch(key -> key.equals(resultItems[0]))) {
-            throw new IllegalArgumentException("The result item already exists in the map.");
+        if (map.containsKey(resultItem)) {
+            throw new IllegalArgumentException("The result item \"" + resultItem.name + "\" already exists in the map.");
         }
 
-        // TODO: 複数個の成果物に対応
         map.put(resultItems[0].toItem(), new Required(requiredItems));
         return this;
     }
@@ -77,7 +80,7 @@ public class RecipeGroup {
      * @return このオブジェクト自身
      */
     public RecipeGroup remove(Item resultItem) {
-        map.entrySet().removeIf(entry -> entry.getKey().name.equals(resultItem.name));
+        map.entrySet().removeIf(entry -> entry.getKey().equals(resultItem));
         return this;
     }
 

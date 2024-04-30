@@ -1,9 +1,5 @@
 package general;
 
-import recipe.Required;
-
-import java.util.LinkedHashMap;
-
 /**
  * アイテム。個数の情報を持たず、単に名前での区別に使用される。
  */
@@ -41,10 +37,13 @@ public class Item {
         return this.toIngredient(quantity);
     }
 
-    /**
-     * mapがitemを含むならtrue。
-     */
-    public static boolean mapHasItem(LinkedHashMap<Item, Required> map, Item item) {
-        return map.keySet().stream().anyMatch(key -> key.name.equals(item.name));
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Item)) return false;
+        return this.name.equals(((Item) obj).name);
+    }
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
     }
 }
