@@ -11,9 +11,12 @@
 - [x] レシピの登録
 - [x] レシピツリーの表示
 - [x] 必要アイテム数の計算
+- [ ] アイテムIDと表示名の分離
+  - [ ] ANSIカラーの使用
 - [ ] レシピの触媒アイテムを登録/ツリーや結果に表示
 - [ ] レシピの成果物に複数個/複数種のアイテムを登録できるように
-- [ ] 対話型CUIを実装
+- [ ] yamlからの読み取りに対応?
+- [ ] 対話型CUIを実装?
 - [ ] より多くのゲームに対応
   - [ ] MinecraftまたはMODのjarファイルからレシピを自動生成
 - [ ] Mavenに公開
@@ -24,15 +27,3 @@ Warning: This project currently has only the minimum functionality.
 
 ### How to use
 Clone the repository, edit `Main.java` with your favorite IDE, and run the Gradle `run` task.
-
-### Implementation status
-- [x] Add items
-- [x] Register recipes
-- [x] Display recipe tree
-- [x] Calculate the number of required items
-- [ ] Register catalyst items for recipes / display in trees and results
-- [ ] Allow registering multiple items/multiple types of items as the result of a recipe
-- [ ] Implement interactive CUI
-- [ ] Support for more games
-  - [ ] Automatic recipe generation from Minecraft or MOD jar files
-- [ ] Publish to Maven
